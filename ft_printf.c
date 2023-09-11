@@ -6,76 +6,61 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:28:51 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/09 16:09:10 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/11 14:11:11 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_printf.h"
 
-void	ft_distribute_args(void **arr, int c)
-{
-	int* intArr = (int*)arr;
-	if (c == 's' || c == 'c')//string
-		ft_putstr_fd(*arr, 1);
-	if (c == 'p')//void * pointer in hex
-		ft_putstr_fd("yet to be implemented\n", 1);
-	if (c == 'd')//decimal
-		ft_putstr_fd("yet to be implemented\n", 1);
-	if (c == 'i')//int
-		ft_putnbr_fd(*intArr, 1);
-	if (c == 'u')//unsigned decimal
-		ft_putstr_fd("yet to be implemented\n", 1);
-	if (c == 'x')//hex number lowercase
-		ft_putstr_fd("yet to be implemented\n", 1);
-	if (c == 'X')//hex number uppercase
-		ft_putstr_fd("yet to be implemented\n", 1);
-	if (c == '%')//%
-		ft_putchar_fd('%', 1);
-}
-
-void	ft_parse_string(void **arr, const char *s)
+int	ft_distribute_args(const char *s, void *arg)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '%')
-		{
-			i += 2;
-			ft_distribute_args(arr, s[i]);
-			arr++;
-		}
-		ft_putchar_fd(s[i], 1);
-		i++;
-	}
-}
-
-int	ft_count_arguments(const char *s)
-{
-	int		count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s == '%')
-			count++;
-	}
-	return (count);
+	if (*s == 's')
+		i += ft_putstr_int((char *) arg);//WORKS:)
+	if (*s == 'c')
+		i += ft_putchar_int(*(char*) arg);
+	if (*s == 'p')//void * pointer in hex
+		ft_putstr_fd("yet to be implemented\n", 1);
+	if (*s == 'd')//decimal
+		ft_putstr_fd("yet to be implemented\n", 1);
+	if (*s == 'i')//int
+		ft_putnbr_fd(123, 1);
+	if (*s == 'u')//unsigned decimal
+		ft_putstr_fd("yet to be implemented\n", 1);
+	if (*s == 'x')//hex number lowercase
+		ft_putstr_fd("yet to be implemented\n", 1);
+	if (*s == 'X')//hex number uppercase
+		ft_putstr_fd("yet to be implemented\n", 1);
+	return (1);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	char	**arguments;
-	int		arg_count;
+	int		i;
 
-	arg_count = ft_count_arguments(s);
-	va_start(args);
-	arguments[i] = va_arg(args);
-	while (++i < count)
-		arguments[i] = va_arg(args);
-	ft_parse_string(arr, s);
+	i = 0;
+	va_start(args, s);
+	while (*s)
+	{
+		if (*s == '%')
+		{
+			s++;
+			if (ft_strchr("cspdiuxX", *s))
+				i += ft_distribute_args(s, va_arg(args, void *));
+			else if (*s == '%')
+				i += ft_putchar_int('%');
+		}
+		else
+		{
+			i = i + ft_putchar_int(*s);
+		}
+		s++;
+
+	}
 	va_end(args);
-	return (1);
+	return (i);
 }
