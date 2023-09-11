@@ -6,11 +6,10 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:11:54 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 17:12:09 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:59:11 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 int	ft_putstr_int(char *s)

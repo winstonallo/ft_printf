@@ -6,11 +6,10 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:13:48 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 17:14:39 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:59:16 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static char	*ft_fill_string(unsigned long value, int *strlen)

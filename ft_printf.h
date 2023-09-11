@@ -6,15 +6,15 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:04:01 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 17:39:31 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:59:14 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft.h"
 # include <stdarg.h>
 # include <bsd/string.h>
+# include "./libft/libft.h"
 
 int		ft_printf(const char *s, ...);
 int		ft_putstr_int(char *s);

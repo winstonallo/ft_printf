@@ -6,11 +6,10 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:15:08 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 17:16:03 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:59:12 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	ft_get_int_length(int n)
