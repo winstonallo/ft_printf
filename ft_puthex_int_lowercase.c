@@ -12,59 +12,48 @@
 
 #include "ft_printf.h"
 
-static char	*ft_fill_string(int value, int *strlen)
+static char	*create_string(unsigned int value, int *strlen)
 {
-	int		i;
-	int		temp;
-	char	*str;
+	int				i;
+	unsigned int	temp;
+	char			*str;
 
 	i = 0;
 	temp = value;
-	if (value < 0)
-	{
-		while (temp < -0)
-		{
-			temp /= 16;
-			i++;
-		}
-		*strlen = i;
-		str = calloc(i + 1, sizeof(char));
-		return (str);
-	}
 	while (temp != 0)
 	{
-		temp /= 16;
+		temp = temp / 16;
 		i++;
 	}
-	*strlen = i;
 	str = calloc(i + 1, sizeof(char));
+	*strlen = i - 1;
 	return (str);
 }
 
-
 int	ft_puthex_int_lowercase(int value, int asc)
 {
-	unsigned long	temp;
-	char			*res;
+	unsigned int	tempval;
+	char			*printout;
 	int				i;
-	int				*strlen;
+	int				*iptr;
 
-	strlen = &i;
-	temp = value;
-	res = ft_fill_string(value, strlen);
-	if (!res)
+	iptr = &i;
+	tempval = value;
+	printout = create_string(value, iptr);
+	if (!printout)
 		return (0);
-	while (temp != 0 && i-- >= 0)
+	while (tempval != 0)
 	{
-		if ((temp % 16) < 10)
-			res[i + 1] = (temp % 16) + 48;
+		if ((tempval % 16) < 10)
+			printout[i] = (tempval % 16) + 48;
 		else
-			res[i + 1] = (temp % 16) + asc;
-		temp = temp / 16;
+			printout[i] = (tempval % 16) + asc;
+		tempval = tempval / 16;
+		i--;
 	}
-	i = ft_strlen(res);
-	ft_putstr_fd(res, 1);
-	free(res);
+	ft_putstr_fd(printout, 1);
+	i = ft_strlen(printout);
+	free(printout);
 	if (value == 0)
 		i += ft_putchar_int('0');
 	return (i);

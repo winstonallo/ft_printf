@@ -14,7 +14,8 @@
 
 int	ft_distribute_args(const char *s, void *arg)
 {
-	int	i;
+	int				i;
+	unsigned long	ptr;
 
 	i = 0;
 	if (*s == 's')
@@ -22,7 +23,13 @@ int	ft_distribute_args(const char *s, void *arg)
 	if (*s == 'c')
 		i += ft_putchar_int(*(char *) &arg);
 	else if (*s == 'p')
-		i += ft_print_adress((unsigned long) arg, 87);
+	{
+		ptr = (unsigned long) arg;
+		if (ptr)
+			i += ft_print_adress((unsigned long) arg, 87);
+		else
+			i += (ft_putstr_int("(nil)"));
+	}
 	else if (*s == 'd' || *s == 'i')
 		i += ft_putnbr_int(*(int *) &arg);
 	else if (*s == 'u')
