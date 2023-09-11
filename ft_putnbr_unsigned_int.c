@@ -46,11 +46,6 @@ int	ft_putnbr_unsigned_int(unsigned int n)
 
 	i = ft_get_int_length(n);
 	ln = n;
-	if (n < 0)
-	{
-		ln = -ln;
-		i++;
-	}
 	len = i;
 	res = ft_allocate_room(i);
 	*(res + i) = 0;
@@ -59,9 +54,7 @@ int	ft_putnbr_unsigned_int(unsigned int n)
 		*(res + i) = ln % 10 + 48;
 		ln = ln / 10;
 	}
-	if (n < 0)
-		*(res + 0) = '-';
-	ft_putstr_fd(res, 1);
+	ft_putstr_int(res);
 	free(res);
 	return (len);
 }
