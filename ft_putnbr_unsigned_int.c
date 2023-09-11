@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_int.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned_int.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:15:08 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 19:16:13 by abied-ch         ###   ########.fr       */
+/*   Created: 2023/09/11 19:11:09 by abied-ch          #+#    #+#             */
+/*   Updated: 2023/09/11 19:17:01 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_get_int_length(int n)
+static int	ft_get_int_length(unsigned int n)
 {
 	int	length;
 
@@ -37,7 +37,7 @@ static char	*ft_allocate_room(int i)
 	return (s);
 }
 
-int	ft_putnbr_int(int n)
+int	ft_putnbr_unsigned_int(unsigned int n)
 {
 	long	ln;
 	size_t	i;
