@@ -8,8 +8,7 @@ SRCS = 	ft_printf.c \
 		ft_print_adress.c \
 		ft_putchar_int.c \
 		ft_putstr_int.c \
-		ft_puthex_int_lowercase.c \
-		ft_puthex_int_uppercase.c \
+		ft_puthex_int.c\
 		ft_putnbr_int.c \
 		ft_putnbr_unsigned_int.c\
 

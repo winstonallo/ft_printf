@@ -6,7 +6,7 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:28:51 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 19:21:25 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:44:59 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	ft_distribute_args(const char *s, void *arg)
 	else if (*s == 'u')
 		i += ft_putnbr_unsigned_int(*(int *) &arg);
 	else if (*s == 'x')
-		i += ft_puthex_int_lowercase(*(int *) &arg, 87);
+		i += ft_puthex_int(*(int *) &arg, 87);
 	else if (*s == 'X')
-		i += ft_puthex_int_uppercase(*(int *) &arg, 87);
+		i += ft_puthex_int(*(int *) &arg, 55);
 	return (i);
 }
 

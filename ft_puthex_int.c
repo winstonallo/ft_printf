@@ -6,7 +6,7 @@
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:03:09 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/11 18:59:13 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:45:14 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*create_string(unsigned int value, int *strlen)
 	return (str);
 }
 
-int	ft_puthex_int_lowercase(int value, int asc)
+int	ft_puthex_int(int value, int asc)
 {
 	unsigned int	tempval;
 	char			*printout;
