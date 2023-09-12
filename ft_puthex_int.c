@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_int_lowercase.c                          :+:      :+:    :+:   */
+/*   ft_puthex_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abied-ch <abied-ch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:03:09 by abied-ch          #+#    #+#             */
-/*   Updated: 2023/09/12 11:45:14 by abied-ch         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:52:22 by abied-ch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*create_string(unsigned int value, int *strlen)
+static char	*create_string(unsigned int n, int *strlen)
 {
 	int				i;
 	unsigned int	temp;
 	char			*str;
 
 	i = 0;
-	temp = value;
+	temp = n;
 	while (temp != 0)
 	{
-		temp = temp / 16;
+		temp /= 16;
 		i++;
 	}
 	str = calloc(i + 1, sizeof(char));
@@ -30,31 +30,31 @@ static char	*create_string(unsigned int value, int *strlen)
 	return (str);
 }
 
-int	ft_puthex_int(int value, int asc)
+int	ft_puthex_int(int n, int font)
 {
-	unsigned int	tempval;
-	char			*printout;
+	unsigned int	temp;
+	char			*str;
 	int				i;
-	int				*iptr;
+	int				*i_ptr;
 
-	iptr = &i;
-	tempval = value;
-	printout = create_string(value, iptr);
-	if (!printout)
+	i_ptr = &i;
+	temp = n;
+	str = create_string(n, i_ptr);
+	if (!str)
 		return (0);
-	while (tempval != 0)
+	while (temp != 0)
 	{
-		if ((tempval % 16) < 10)
-			printout[i] = (tempval % 16) + 48;
+		if ((temp % 16) < 10)
+			str[i] = (temp % 16) + '0';
 		else
-			printout[i] = (tempval % 16) + asc;
-		tempval = tempval / 16;
+			str[i] = (temp % 16) + font;
+		temp = temp / 16;
 		i--;
 	}
-	ft_putstr_fd(printout, 1);
-	i = ft_strlen(printout);
-	free(printout);
-	if (value == 0)
+	ft_putstr_fd(str, 1);
+	i = ft_strlen(str);
+	free(str);
+	if (n == 0)
 		i += ft_putchar_int('0');
 	return (i);
 }
